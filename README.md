@@ -12,16 +12,17 @@ La solución consta de tres proyectos principales:
 
 ## Tecnologías Utilizadas
 
-- **.NET 9.0**: Plataforma principal de desarrollo.
-- **Duende IdentityServer 7**: Framework para la implementación de servidores de identidad y acceso.
-- **ASP.NET Core**: Utilizado para construir tanto la API como el cliente.
+- **.NET 9.0**
+- **Duende IdentityServer 7**
+- **ASP.NET Core**
+- **IdentityModel 7**
 
 ## Configuración y Ejecución
 
 ### Prerrequisitos
 
-- **.NET SDK 9.0** o superior instalado en tu máquina.
-- **Certificados de desarrollo HTTPS** confiables. Puedes generarlos y confiarlos ejecutando:
+- **.NET SDK 9.0** o superior instalado.
+- Certificados HTTPS de desarrollo confiables:
 
     ```bash
     dotnet dev-certs https --trust
@@ -32,11 +33,11 @@ La solución consta de tres proyectos principales:
 1. **Clonar el Repositorio**
 
     ```bash
-    git clone https://github.com/tu_usuario/tu_repositorio.git
-    cd tu_repositorio
+    git clone https://github.com/GDriem/quickstart.git
+    cd quickstart
     ```
 
-2. **Restaurar Paquetes y Compilar la Solución**
+2. **Restaurar y Compilar**
 
     ```bash
     dotnet restore
@@ -45,25 +46,30 @@ La solución consta de tres proyectos principales:
 
 3. **Ejecutar los Proyectos**
 
-    Abre tres terminales separadas y navega a las carpetas de cada proyecto (`IdentityServer`, `Api`, `Client`). En cada terminal, ejecuta:
+    Desde tres terminales distintas:
 
     ```bash
+    cd src/IdentityServer
     dotnet run
     ```
 
-    Asegúrate de que cada proyecto se esté ejecutando en los siguientes puertos:
+    ```bash
+    cd src/Api
+    dotnet run
+    ```
 
-    - **IdentityServer**: https://localhost:5001
-    - **Api**: https://localhost:6001
-    - **Client**: Aplicación de consola que se ejecuta localmente.
+    ```bash
+    cd src/Client
+    dotnet run
+    ```
 
-4. **Verificar la Comunicación**
+4. **Verificar Funcionamiento**
 
-    - **IdentityServer** debería mostrar que está escuchando en `https://localhost:5001`.
-    - **Api** debería estar protegida y requerir un token válido para acceder.
-    - **Client** debería obtener un token de `IdentityServer` y usarlo para acceder a la `Api`, mostrando la respuesta en la consola.
+    - El cliente obtendrá un token desde `IdentityServer`.
+    - Luego lo usará para hacer una solicitud autenticada a la API.
+    - La respuesta de la API se mostrará en la consola.
 
-## Notas Adicionales
+## Enlace de referencia
 
-- Asegúrate de que los puertos configurados en cada proyecto coincidan con los mencionados anteriormente. Puedes ajustar los puertos en los archivos `launchSettings.json` de cada proyecto si es necesario.
-- Para más detalles sobre la implementación y configuración, consulta el [quickstart oficial de Duende IdentityServer sobre Client Credentials](https://docs.duendesoftware.com/identityserver/v7/quickstarts/1_client_credentials/).
+Guía oficial usada como base para este proyecto:  
+👉 [https://docs.duendesoftware.com/identityserver/v7/quickstarts/1_client_credentials/](https://docs.duendesoftware.com/identityserver/v7/quickstarts/1_client_credentials/)
